@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herramientas de Minecraft</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Herramientas de Minecraft</h1>
+            <button class="toggle-button" onclick="toggleDarkMode()">
+                <img id="toggle-icon" src="https://img.icons8.com/ios-filled/50/000000/sun.png" alt="Toggle Dark Mode">
+            </button>
+        </div>
+        <div class="content">
+            <h2>Encantamientos</h2>
+            <label for="item">Selecciona un objeto:</label>
+            <select id="item" onchange="mostrarEncantamientos()">
+                <option value="selecciona">Selecciona</option>
+                <option value="espada">Espada</option>
+                <option value="hacha">Hacha</option>
+                <option value="pico">Pico</option>
+                <option value="pala">Pala</option>
+                <option value="azada">Azada</option>
+                <option value="arco">Arco</option>
+                <option value="tridente">Tridente</option>
+                <option value="casco">Casco</option>
+                <option value="pechera">Pechera</option>
+                <option value="pantalones">Pantalones</option>
+                <option value="botas">Botas</option>
+            </select>
+            <div class="result" id="result"></div>
+        </div>
+    </div>
+
+    <script>
+        function mostrarEncantamientos() {
+            const item = document.getElementById('item').value;
+            let encantamientos = '';
+
+            switch(item) {
+                case 'espada':
+                    encantamientos = `
+                        <ul>
+                            <li>Filo (V)</li>
+                            <li>Aspecto Ígneo (II)</li>
+                            <li>Botín (III)</li>
+                            <li>Empuje (II)</li>
+                            <li>Irrompibilidad (III)</li>
+                            <li>Reparación (I)</li>
+                            <li>Golpeo (V)</li>
+                            <li>Perdición de los Artrópodos (V)</li>
+                        </ul>`;
+                    break;
+                case 'hacha':
+                case 'pico':
+                case 'pala':
+                case 'azada':
+                    encantamientos = `
+                        <ul>
+                            <li>Eficiencia (V)</li>
+                            <li>Fortuna (III)</li>
+                            <li>Toque de Seda (I)</li>
+                            <li>Irrompibilidad (III)</li>
+                            <li>Reparación (I)</li>
+                        </ul>`;
+                    break;
+                case 'arco':
+                    encantamientos = `
+                        <ul>
+                            <li>Poder (V)</li>
+                            <li>Infinidad (I)</li>
+                            <li>Fuego (I)</li>
+                            <li>Irrompibilidad (III)</li>
+                            <li>Reparación (I)</li>
+                            <li>Retroceso (II)</li>
+                        </ul>`;
+                    break;
+                case 'tridente':
+                    encantamientos = `
+                        <ul>
+                            <li>Empalamiento (V)</li>
+                            <li>Lealtad (III)</li>
+                            <li>Propulsión Acuática (III)</li>
+                            <li>Irrompibilidad (III)</li>
+                            <li>Reparación (I)</li>
+                            <li>Conductividad (I)</li>
+                        </ul>`;
+                    break;
+                case 'casco':
+                    encantamientos = `
+                        <ul>
+                            <li>Protección (IV)</li>
+                            <li>Respiración (III)</li>
+                            <li>Afínidad Acuática (I)</li>
+                            <li>Irrompibilidad (III)</li>
+                            <li>Reparación (I)</li>
+                            <li>Espinas (III)</li>
+                            <li>Protección contra Proyectiles (IV)</li>
+                            <li>Protección contra el Fuego (IV)</li>
+                            <li>Protección contra Explosiones (IV)</li>
+                        </ul>`;
+                    break;
+                case 'pechera':
+                    encantamientos = `
+                        <ul>
+                            <li>Protección (IV)</li>
+                            <li>Protección contra el Fuego (IV)</li>
+                            <li>Protección contra Explosiones (IV)</li>
+                            <li>Protección contra Proyectiles (IV)</li>
+                            <li>Irrompibilidad (III)</li>
+                            <li>Reparación (I)</li>
+                            <li>Espinas (III)</li>
+                        </ul>`;
+                    break;
+                case 'pantalones':
+                    encantamientos = `
+                        <ul>
+                            <li>Protección (IV)</li>
+                            <li>Protección contra el Fuego (IV)</li>
+                            <li>Protección contra Explosiones (IV)</li>
+                            <li>Protección contra Proyectiles (IV)</li>
+                            <li>Irrompibilidad (III)</li>
+                            <li>Reparación (I)</li>
+                            <li>Espinas (III)</li>
+                        </ul>`;
+                    break;
+                case 'botas':
+                    encantamientos = `
+                        <ul>
+                            <li>Protección (IV)</li>
+                            <li>Caída de Pluma (IV)</li>
+                            <li>Agilidad Acuática (III)</li>
+                            <li>Irrompibilidad (III)</li>
+                            <li>Reparación (I)</li>
+                            <li>Espinas (III)</li>
+                            <li>Protección contra Proyectiles (IV)</li>
+                            <li>Protección contra el Fuego (IV)</li>
+                            <li>Protección contra Explosiones (IV)</li>
+                            <li>Velocidad del Alma (III)</li>
+                        </ul>`;
+                    break;
+                default:
+                    encantamientos = 'Selecciona un objeto válido.';
+            }
+
+            document.getElementById('result').innerHTML = encantamientos;
+        }
+
+        function toggleDarkMode() {
+            const body = document.body;
+            const icon = document.getElementById('toggle-icon');
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                icon.src = 'https://img.icons8.com/ios-filled/50/000000/moon-symbol.png';
+            } else {
+                icon.src = 'https://img.icons8.com/ios-filled/50/000000/sun.png';
+            }
+        }
+
+        // Set default selection
+        document.getElementById('item').value = 'selecciona';
+    </script>
+</body>
+</html>
